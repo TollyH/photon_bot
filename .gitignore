@@ -1,0 +1,5 @@
+__pycache__/
+.vscode/
+.pylintrc
+*.ini
+!config-blank.ini
