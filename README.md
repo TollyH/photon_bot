@@ -2,6 +2,28 @@
 
 An easily expandable Discord Bot written in Python 3 using the [pycord](https://github.com/Pycord-Development/pycord) library.
 
+## Table of Contents
+- [Photon Discord Bot Framework](#photon-discord-bot-framework)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Running the Bot](#running-the-bot)
+  - [Configuration Files](#configuration-files)
+    - [Required Sections](#required-sections)
+  - [Plugins](#plugins)
+    - [Default Plugins](#default-plugins)
+      - [Commands](#commands)
+      - [Events](#events)
+      - [Tasks](#tasks)
+    - [Examples](#examples)
+      - [Example Command Plugin](#example-command-plugin)
+      - [Example Event Plugin](#example-event-plugin)
+      - [Example Task Plugin](#example-task-plugin)
+  - [Utils](#utils)
+  - [Resources](#resources)
+    - [Fonts](#fonts)
+    - [Images](#images)
+    - [Text](#text)
+
 ## Installation
 
 **Note: It is recommended that you do not try to use this framework until pycord fully releases their support for Application Commands. For this reason, pycord has temporarily been excluded from the `requirements.txt` file and must be installed from GitHub manually.**
