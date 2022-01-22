@@ -18,6 +18,7 @@ An easily expandable Discord Bot written in Python 3 using the [pycord](https://
       - [Example Command Plugin](#example-command-plugin)
       - [Example Event Plugin](#example-event-plugin)
       - [Example Task Plugin](#example-task-plugin)
+  - [Third-Party APIs](#third-party-apis)
   - [Utils](#utils)
   - [Resources](#resources)
     - [Fonts](#fonts)
@@ -139,6 +140,16 @@ def register_tasks(bot: PhotonBot):
         # Do not start task until bot is logged in
         await bot.discord_bot.wait_until_ready()
 ```
+
+## Third-Party APIs
+
+- [Reddit](https://github.com/reddit-archive/reddit/wiki/OAuth2-Quick-Start-Example#first-steps)
+- [OMDb](https://www.omdbapi.com/apikey.aspx)
+- [Wolfram|Alpha](https://developer.wolframalpha.com/portal/myapps/)
+- [Oxford Dictionary](https://developer.oxforddictionaries.com/)
+- [OpenWeatherMap](https://home.openweathermap.org/users/sign_up)
+- [HERE](https://developer.here.com/projects)
+- [Google Custom Search](https://programmablesearchengine.google.com/cse/all) *(must have image search enabled)*
 
 ## Utils
 
