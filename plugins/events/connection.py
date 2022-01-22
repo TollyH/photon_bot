@@ -21,8 +21,14 @@ def register_events(bot: PhotonBot):
                 int(bot.config['Personalisation']['StatusType'])
             ]
         ))
+        command_count = 0
+        for command in bot.discord_bot.commands:
+            if isinstance(command, discord.commands.SlashCommandGroup):
+                command_count += len(list(command.walk_commands()))
+            else:
+                command_count += 1
         print(
             f"Connected to {bot.discord_bot.user} on "
             + f"{len(bot.discord_bot.guilds)} guilds. "
-            + f"{len(bot.discord_bot.commands)} global commands registered."
+            + f"{command_count} global commands registered."
         )

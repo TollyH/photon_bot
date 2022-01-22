@@ -162,9 +162,15 @@ def register_commands(bot: PhotonBot):
             value=str(len(bot.discord_bot.guilds)),
             inline=True
         )
+        command_count = 0
+        for command in bot.discord_bot.commands:
+            if isinstance(command, discord.commands.SlashCommandGroup):
+                command_count += len(list(command.walk_commands()))
+            else:
+                command_count += 1
         embed.add_field(
             name="Command Count",
-            value=str(len(bot.discord_bot.commands)),
+            value=str(command_count),
             inline=True
         )
         embed.add_field(
