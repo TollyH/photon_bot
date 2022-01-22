@@ -144,8 +144,8 @@ def register_commands(bot: PhotonBot):
         )
         progress_bar += " " * (20 - len(progress_bar))
         await ctx.respond(
-            f"**{user}**: `{exp}` **EXP** | `{level}` **LV** | `{rank}` "
-            + f"**RANK**\n`[{progress_bar}]`"
+            f"**{user}**: `{exp_info.exp}` **EXP** | `{exp_info.level}` **LV**"
+            + f" | `{exp_info.rank}` **RANK**\n`[{progress_bar}]`"
             + f"**{exp_info.remaining} / {exp_info.next_level}**"
         )
 
