@@ -596,6 +596,9 @@ def register_commands(bot: PhotonBot):
             page_groups.append(discord.ext.pages.PageGroup(
                 pages, label=pod.title, description=f"{len(pages)} item(s)"
             ))
+        if len(page_groups) == 0:
+            await ctx.respond("Your expression returned no results")
+            return
         await discord.ext.pages.Paginator(
             page_groups, show_menu=True
         ).respond(ctx.interaction)
