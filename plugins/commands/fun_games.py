@@ -288,6 +288,7 @@ def register_commands(bot: PhotonBot):
     @bot.discord_bot.command()
     async def tictactoe(ctx: ApplicationContext,
             opponent: Option(discord.User, "The user you want to play with")):
+        """Play a game of Tic Tac Toe against another member of the server"""
         if isinstance(opponent, int):
             await ctx.respond(
                 "That user doesn't appear to be in this server",
