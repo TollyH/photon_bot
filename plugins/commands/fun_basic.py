@@ -77,7 +77,7 @@ def register_commands(bot: PhotonBot):
         formatted = ""
         for char in text.lower():
             if char in string.ascii_lowercase:
-                formatted += f":regional_indicator_{char}:"
+                formatted += f":regional_indicator_{char}: "
             elif char == " ":
                 formatted += "   "
         await ctx.respond(formatted)
