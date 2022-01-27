@@ -167,10 +167,10 @@ def register_commands(bot: PhotonBot):
             await ctx.respond("Nobody has any EXP in this server!")
             return
         if len(bottom_lineup) == 0:
-            board = board.crop((0, 0, 960, 540))
+            board = board.crop((0, 0, 1260, 540))
         if len(top_lineup) < 5:
             board = board.crop(
-                (0, 0, 960, 540 - (108 * (5 - len(top_lineup))))
+                (0, 0, 1260, 540 - (108 * (5 - len(top_lineup))))
             )
         avatar_mask_base = Image.open(
                 "resources/images/AvatarMask.png").resize(
