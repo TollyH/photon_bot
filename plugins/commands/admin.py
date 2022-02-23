@@ -2,6 +2,7 @@
 import discord
 from discord.commands import Option
 from discord.commands.context import ApplicationContext
+from mysql.connector import IntegrityError
 
 import utils
 from photon_bot import PhotonBot
@@ -45,11 +46,17 @@ def register_commands(bot: PhotonBot):
             if not database.modify(
                     "UPDATE guild_config SET exp_levelup_channel = %s "
                     + "WHERE guild_id = %s;", (ctx.channel.id, ctx.guild.id)):
-                database.modify(
-                    "INSERT INTO guild_config "
-                    + "(guild_id, exp_levelup_channel) VALUES (%s, %s);",
-                    (ctx.guild.id, ctx.channel.id)
-                )
+                try:
+                    database.modify(
+                        "INSERT INTO guild_config "
+                        + "(guild_id, exp_levelup_channel) VALUES (%s, %s);",
+                        (ctx.guild.id, ctx.channel.id)
+                    )
+                except IntegrityError:
+                    await ctx.respond(
+                        "Level up alerts are already sent here", ephemeral=True
+                    )
+                    return
         await ctx.respond(
             "Level up alerts will now be sent here", ephemeral=True
         )
@@ -67,11 +74,17 @@ def register_commands(bot: PhotonBot):
             if not database.modify(
                     "UPDATE guild_config SET exp_levelup_channel=0 "
                     + "WHERE guild_id = %s;", (ctx.guild.id,)):
-                database.modify(
-                    "INSERT INTO guild_config "
-                    + "(guild_id, exp_levelup_channel) VALUES (%s, 0);",
-                    (ctx.guild.id,)
-                )
+                try:
+                    database.modify(
+                        "INSERT INTO guild_config "
+                        + "(guild_id, exp_levelup_channel) VALUES (%s, 0);",
+                        (ctx.guild.id,)
+                    )
+                except IntegrityError:
+                    await ctx.respond(
+                        "Level up alerts are already disabled", ephemeral=True
+                    )
+                    return
         await ctx.respond(
             "Level up alerts are now disabled", ephemeral=True
         )
