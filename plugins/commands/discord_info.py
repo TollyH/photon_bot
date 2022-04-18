@@ -72,6 +72,8 @@ def register_commands(bot: PhotonBot):
         if isinstance(user, int):
             user = await bot.discord_bot.fetch_user(user)
             is_in_guild = False
+        if not isinstance(user, discord.Member):
+            is_in_guild = False
         embed = discord.Embed(
             title=f"User Info for {user}",
             color=ctx.author.color,
