@@ -27,8 +27,6 @@ An easily expandable Discord Bot written in Python 3 using the [pycord](https://
 
 ## Installation
 
-**Note: It is recommended that you do not try to use this framework until pycord fully releases their support for Application Commands. For this reason, pycord has temporarily been excluded from the `requirements.txt` file and must be installed from GitHub manually.**
-
 **Python 3.8 or greater and a MySQL/MariaDB server are required.**
 
 - Clone this repository with `git clone https://github.com/TollyH/photon_bot.git`, or by using the download button above

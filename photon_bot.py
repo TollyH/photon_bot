@@ -33,6 +33,19 @@ class PhotonBot:
         Create an instance of discord.Bot with all Intents and load plugins
         specified in the config file. Does not open a connection to Discord.
         """
+
+        ## A (hopefully) temporary fix to a bug in pycord.
+        ## https://github.com/Pycord-Development/pycord/issues/1393
+        # Ensure that command function parameter checks always pass
+        discord.commands.core.SlashCommand._check_required_params = (
+            lambda self, params: iter(params.items())
+        )
+        # Stop the 'ctx' parameter being considered as a Discord command option
+        old_func = discord.commands.core.SlashCommand._parse_options
+        discord.commands.core.SlashCommand._parse_options = (
+            lambda self, params: old_func(self, params)[1:]
+        )
+
         self.discord_bot = discord.Bot(intents=Intents.all())
         self.config = configparser.ConfigParser(
             interpolation=configparser.BasicInterpolation()
