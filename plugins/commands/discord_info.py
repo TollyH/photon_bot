@@ -141,6 +141,8 @@ def register_commands(bot: PhotonBot):
     @bot.discord_bot.command()
     async def botinfo(ctx: ApplicationContext):
         """Get information about this bot"""
+        # Getting info can take a long time (>3 seconds) so must be deferred
+        await ctx.defer()
         embed = discord.Embed(
             title="Bot Info",
             description=f"Connected: **{bot.discord_bot.user}**\nBuilt on the "
