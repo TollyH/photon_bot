@@ -2,7 +2,7 @@
 import collections
 from configparser import ConfigParser
 
-import mysql.connector
+import mariadb
 
 ExpInfo = collections.namedtuple(
     'ExpInfo', ['exp', 'level', 'remaining', 'rank', 'next_level', 'color']
@@ -23,7 +23,7 @@ def get_all_words():
 
 class Database:
     """
-    A basic wrapper for mysql.connector with context manager support,
+    A basic wrapper for MariaDB with context manager support,
     designed for use with PhotonBot.
     """
     def __init__(self, database_config: ConfigParser):
@@ -31,11 +31,11 @@ class Database:
         Opens a connection to a database with the details specified in the
         `DatabaseConnection` section of the config file.
         """
-        self._database = mysql.connector.connect(
+        self._database = mariadb.connect(
             host=database_config['Host'],
             user=database_config['Username'],
             password=database_config['Password'],
-            database=database_config['DatabaseName'], charset='utf8mb4'
+            database=database_config['DatabaseName']
         )
         self._cursor = self._database.cursor(buffered=True)
 

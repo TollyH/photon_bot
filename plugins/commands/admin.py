@@ -2,7 +2,7 @@
 import discord
 from discord.commands import Option
 from discord.commands.context import ApplicationContext
-from mysql.connector import IntegrityError
+from mariadb import IntegrityError
 
 import utils
 from photon_bot import PhotonBot
